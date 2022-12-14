@@ -1,0 +1,98 @@
+html {
+    height: 100%;
+}
+
+body {
+    height: calc(100vh - 220px);
+}
+
+.main-logo-link {
+    width: fit-content;
+}
+
+.main-logo {
+    top: 5px;
+    left: 5px;
+    height: 10vh;
+    object-fit: cover;
+}
+
+.nav-link {
+    padding: 0.15rem;
+}
+
+.border-black {
+    border: 1px solid black !important;
+}
+
+.btn-black {
+    background: black;
+    color: white;
+}
+
+.btn.btn-outline-black.rounded-0,
+.btn.btn-black.rounded-0 {
+    padding: 0.375rem 0.375rem;
+}
+
+.icon {
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
+.input-group-append {
+    position: absolute;
+    left: 100%;
+}
+
+.search-button,
+.mobile-search-button {
+    position: relative;
+    left: -100%;
+    z-index: 100 !important;
+}
+
+.container-padding {
+    padding-top: 10rem;
+}
+
+.form-group {
+    margin-bottom: 10px !important;
+    width: 100%
+}
+
+.form-group label {
+    visibility: hidden;
+    position: absolute;
+}
+
+#div_id_remember {
+    text-align: left !important;
+}
+
+#div_id_remember label {
+    visibility: visible !important;
+}
+
+@media (max-width: 992px) {
+    .d-contents {
+        display: contents !important;
+    }
+
+    .navbar {
+        justify-content: space-around !important;
+    }
+
+    .container-padding {
+        padding-top: 5rem;
+    }
+}
+
+@media (max-width: 1360px) {
+    .main-logo {
+        width: 15vw;
+    }
+}
