@@ -4,6 +4,7 @@ html {
 
 body {
     height: calc(100vh - 220px);
+    background-color: #495057;
 }
 
 .main-logo-link {
@@ -89,10 +90,152 @@ body {
     .container-padding {
         padding-top: 5rem;
     }
+
+    .whatMargin {
+        padding-top: 3rem !important;
+    }
 }
+
 
 @media (max-width: 1360px) {
     .main-logo {
         width: 15vw;
     }
+}
+
+.container {
+    max-width: 960px;
+
+}
+
+.whatDiv {
+    background-color: #495057;
+
+}
+
+.whatBox {
+    margin-top: 7rem !important;
+}
+
+
+.boxFade {
+    position: inherit;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, .9);
+    color: #fff;
+}
+
+/*
+   * Custom translucent site header
+   */
+
+.site-header {
+    background-color: rgba(0, 0, 0, .85);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    backdrop-filter: saturate(180%) blur(20px);
+}
+
+.site-header a {
+    color: #999;
+    transition: ease-in-out color .15s;
+}
+
+.site-header a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+/*
+   * Dummy devices (replace them with your own or something else entirely!)
+   */
+
+.product-device {
+    position: absolute;
+    right: 5%;
+    bottom: 5%;
+    width: 150px;
+    height: 270px;
+    background-color: #333;
+    border-radius: 21px;
+    -webkit-transform: rotate(30deg);
+    transform: rotate(30deg);
+
+}
+
+.product-device::before {
+    position: absolute;
+    top: 4%;
+    right: 10px;
+    bottom: 4%;
+    left: 10px;
+    content: "";
+    background-color: rgba(0, 0, 0, .1);
+    border-radius: 5px;
+    background: url("../test.png") no-repeat center center / cover;
+}
+
+.product-device-2 {
+    top: 35%;
+    right: auto;
+    bottom: 0;
+    left: 5%;
+    background-color: #333;
+    -webkit-transform: rotate(-30deg);
+    transform: rotate(-30deg);
+}
+
+
+/*
+   * Extra utilities
+   */
+
+.border-top {
+    border-top: 1px solid #e5e5e5;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+.flex-equal>* {
+    -ms-flex: 1;
+    -webkit-box-flex: 1;
+    flex: 1;
+}
+
+@media (min-width: 768px) {
+    .flex-md-equal>* {
+        -ms-flex: 1;
+        -webkit-box-flex: 1;
+        flex: 1;
+    }
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+/* Youtube Embed */
+.video-container {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+.video-container::after {
+    padding-top: 56.25%;
+    display: block;
+    content: '';
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }

@@ -1,3 +1,4 @@
+{% if request.user.is_authenticated %}
 <div class="collapse navbar-collapse" id="main-nav">
   <ul class="navbar-nav navbar-dark w-auto mx-auto">
     <li class="nav-item d-block d-md-none">
@@ -5,7 +6,6 @@
         Home
       </a>
     </li>
-    {% if request.user.is_authenticated %}
     <li class="nav-item">
       <a class="logo-font font-weight-bold nav-link text-white mr-5" href="" id="run-link">
         My Runs
@@ -21,12 +21,6 @@
         Generate a Run
       </a>
     </li>
-    {% else %}
-    <li class="nav-item">
-      <a class="logo-font font-weight-bold nav-link text-white mr-5" href="" id="whatis-link">
-        What is The Pyramid: Ultimate?
-      </a>
-    </li>
-    {% endif %}
   </ul>
 </div>
+{% endif %}
