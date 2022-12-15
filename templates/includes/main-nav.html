@@ -1,10 +1,32 @@
-{% if request.user.is_authenticated %}
 <div class="collapse navbar-collapse" id="main-nav">
   <ul class="navbar-nav navbar-dark w-auto mx-auto">
     <li class="nav-item d-block d-md-none">
       <a class="logo-font font-weight-bold nav-link text-white mr-5" href="{% url 'home' %}" id="home-link">
         Home
       </a>
+    </li>
+    {% if request.user.is_authenticated %}
+    <li class="nav-item dropdown">
+      <a class="logo-font font-weight-bold nav-link text-white mr-5" href="#" id="all-products-link"
+        data-toggle="dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+        role="button">Pyramid Games</a>
+      <div class="dropdown-menu border-0" aria-labelledby="all-products-link">
+        <a href="" class="dropdown-item">All Games</a>
+        <a href="" class="dropdown-item">Action</a>
+        <a href="" class="dropdown-item">Adventure</a>
+        <a href="" class="dropdown-item">Autobattler</a>
+        <a href="" class="dropdown-item">Arena Battler</a>
+        <a href="" class="dropdown-item">Dating Sim</a>
+        <a href="" class="dropdown-item">Dice Games</a>
+        <a href="" class="dropdown-item">Deckbuilder</a>
+        <a href="" class="dropdown-item">Platformer</a>
+        <a href="" class="dropdown-item">Dungeon Crawler</a>
+        <a href="" class="dropdown-item">Puzzle</a>
+        <a href="" class="dropdown-item">Shooters</a>
+        <a href="" class="dropdown-item">Strategy</a>
+        <a href="" class="dropdown-item">Tactics</a>
+        <a href="" class="dropdown-item">Web Based</a>
+      </div>
     </li>
     <li class="nav-item">
       <a class="logo-font font-weight-bold nav-link text-white mr-5" href="" id="run-link">
@@ -21,6 +43,34 @@
         Generate a Run
       </a>
     </li>
+    {% else %}
+    <li class="nav-item">
+      <a class="logo-font font-weight-bold nav-link text-white mr-5" href="" id="whatis-link">
+        What is The Pyramid: Ultimate?
+      </a>
+    </li>
+    <li class="nav-item dropdown">
+      <a class="logo-font font-weight-bold nav-link text-white mr-5" href="#" id="all-products-link"
+        data-toggle="dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+        role="button">Pyramid Games</a>
+      <div class="dropdown-menu border-0" aria-labelledby="all-products-link">
+        <a href="" class="dropdown-item">All Games</a>
+        <a href="" class="dropdown-item">Action</a>
+        <a href="" class="dropdown-item">Adventure</a>
+        <a href="" class="dropdown-item">Autobattler</a>
+        <a href="" class="dropdown-item">Arena Battler</a>
+        <a href="" class="dropdown-item">Dating Sim</a>
+        <a href="" class="dropdown-item">Dice Games</a>
+        <a href="" class="dropdown-item">Deckbuilder</a>
+        <a href="" class="dropdown-item">Platformer</a>
+        <a href="" class="dropdown-item">Dungeon Crawler</a>
+        <a href="" class="dropdown-item">Puzzle</a>
+        <a href="" class="dropdown-item">Shooters</a>
+        <a href="" class="dropdown-item">Strategy</a>
+        <a href="" class="dropdown-item">Tactics</a>
+        <a href="" class="dropdown-item">Web Based</a>
+      </div>
+    </li>
+    {% endif %}
   </ul>
 </div>
-{% endif %}
