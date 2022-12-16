@@ -5,7 +5,8 @@ class Game(models.Model):
     description = models.TextField()
     release_date = models.DateField(blank=True, null=True)
     category = models.ForeignKey('Category', on_delete=models.CASCADE)
-    external_link = models.URLField()
+    steam_link = models.URLField(blank=True)
+    external_link = models.URLField(blank=True)
     image = models.ImageField(upload_to='media')
 
     def __str__(self):

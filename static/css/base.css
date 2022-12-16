@@ -36,6 +36,12 @@ body {
     padding: 0.375rem 0.375rem;
 }
 
+.btt-button {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
 .icon {
     align-items: center;
     display: inline-flex;

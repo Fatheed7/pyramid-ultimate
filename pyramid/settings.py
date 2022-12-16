@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'games',
     'storages',
     'crispy_forms',
+    'mathfilters',
 ]
 
 MIDDLEWARE = [

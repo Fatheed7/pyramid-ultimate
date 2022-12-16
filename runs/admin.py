@@ -6,7 +6,7 @@ class GameAdmin(admin.ModelAdmin):
         'name',
         'category',
         'release_date',
-        'external_link'
+        'steam_link'
     )
 
     ordering = ('name',)

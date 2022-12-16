@@ -1,0 +1,153 @@
+{% extends "base.html" %}
+{% block extra_title %}
+{% for c in current_categories %}
+- {{c.friendly_name}}
+{% endfor %}
+{%endblock %} {% load static %} {% block page_header %} {% load mathfilters %}
+<div class="container header-container">
+    <div class="row">
+        <div class="col"></div>
+    </div>
+</div>
+{% endblock %} {% block content %}
+<div class="overlay"></div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col text-center mt-3">
+            <h1 class="logo-font">games</h1>
+            {% for c in current_categories %}
+            <a class="category-badge text-decoration-none" href="">
+                <span class="p-2 mt-2 badge badge-white text-black rounded-0 border border-dark">{{ c.name }}</span>
+            </a>
+            {% endfor %}
+            <hr />
+        </div>
+    </div>
+    <div class="row">
+        <div class="game-container col-10 offset-1 mb-3">
+            <div class="row mt-1 mb-2">
+                {% if games|length == 0 %}
+                <div class="jumbotron">
+                    <h1 class="text-center">Oh dear!</h1>
+                    {% if search_term %}
+                    <p class="text-center">
+                        We couldn't find any games using the search term <strong>"{{ search_term }}"</strong>.
+                    </p>
+                    <p class="text-center">
+                        Please try a different search term, or click the button below.
+                    </p>
+                    {% else %}
+                    <p class="text-center">
+                        It seems there aren't any games in this category at the moment.
+                    </p>
+                    {% endif %}
+                    <div class="my-5 contact-button">
+                        <a href="" class="shop-now-button btn rounded-pill">Click here to return to all
+                            games.</a>
+                    </div>
+                    {% else %}
+                    <div
+                        class="col-12 col-md-6 my-auto order-md-last d-flex justify-content-center justify-content-md-end">
+                        <div class="sort-select-wrapper">
+                            <label for="sort-selector" class="text-white me-2">Refine Search:</label>
+                            <!-- prettier-ignore-start -->
+                            <select id="sort-selector" class="custom-select custom-select-sm rounded-0 border border-{% if current_sorting != 'None_None' %}info{% else %}black{% endif %}">
+                                <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...</option>
+                                <option value="name_asc" {% if current_sorting == 'name_asc' %}selected{% endif %}>Name (A-Z)</option>
+                                <option value="name_desc" {% if current_sorting == 'name_desc' %}selected{% endif %}>Name (Z-A)</option>
+                                <option value="category_asc" {% if current_sorting == 'category_asc' %}selected{% endif %}>Category (A-Z)</option>
+                                <option value="category_desc" {% if current_sorting == 'category_desc' %}selected{% endif %}>Category (Z-A)</option>
+                            </select>
+                            <!-- prettier-ignore-end -->
+
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 order-md-first">
+                        <p class="text-white mt-3 text-left text-md-left">
+                            {% if search_term or current_categories or current_sorting != 'None_None' %}
+                            <a href="{% url 'games' %}">Games Home</a> |
+                            {% endif %}
+                            {{ games|length }} games{% if search_term %} found for <strong>"{{ search_term
+                                }}"</strong>{% endif %}
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    {% for game in games %}
+                    <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-2 mb-3">
+                        <div class="card h-100 border-0">
+                            {% if game.image %}
+                            <a href="">
+                                <div class="frame d-flex flex-wrap align-items-center">
+                                    <img class="card-img-top img-fluid mx-auto d-block" src="{{ game.image.url }}"
+                                        alt="{{ game.name }}" />
+                                </div>
+                            </a>
+                            {% else %}
+                            <a href="">
+                                <div class="frame d-flex flex-wrap align-items-center">
+                                    <img class="card-img-top img-fluid mx-auto d-block" src="{{ MEDIA_URL }}noimage.png"
+                                        alt="{{ game.name }}" />
+                                </div>
+                            </a>
+                            {% endif %}
+                            <div class="card-body pb-0">
+                                <p class="mb-0 text-center">{{ game.name }}</p>
+                            </div>
+                            <div class="card-footer bg-white pt-0 border-0 text-left">
+                                <div class="row">
+                                    <div class="col">
+                                        <p class="lead mb-0 text-center font-weight-bold">
+                                            <i class="fa-solid fa-gamepad"></i> {{game.category}}
+                                        </p>
+                                        {% if game.category %}
+                                        <p class="small mt-1 mb-0 text-center">
+                                            <a class="text-white"
+                                                href="{% url 'games' %}?category={{ game.category.name }}">
+                                                <i class="fas fa-tag me-1"></i>{{ game.category.friendly_name }}
+                                            </a>
+                                        </p>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}{% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="btt-button shadow-sm rounded-0 border border-black bg-white">
+        <a class="btt-link d-flex h-100 text-decoration-none">
+            <i class="fas fa-arrow-up text-black mx-auto my-auto"></i>
+        </a>
+    </div>
+    {% endblock %}
+
+    {% block postloadjs %}
+    {{ block.super }}
+    <script>
+        $('.btt-link').click(function (e) {
+            window.scrollTo(0, 0)
+        })
+    </script>
+
+    <script>
+        $('#sort-selector').change(function () {
+            let selector = $(this);
+            let currentUrl = new URL(window.location);
+            let sort;
+            let direction;
+
+            let selectedVal = "";
+            selectedVal = selector.val();
+            if (selectedVal != "reset") {
+                currentUrl.searchParams.delete("sort");
+                currentUrl.searchParams.delete("direction");
+
+                window.location.replace(currentUrl);
+            }
+        });
+    </script>
+    {% endblock %}
