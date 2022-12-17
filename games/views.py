@@ -60,3 +60,14 @@ def all_games(request):
     }
 
     return render(request, 'games/games.html', context)
+
+def game_detail(request, game_id):
+    """ A view to show individual product details """
+
+    game = get_object_or_404(Game, pk=game_id)
+
+    context = {
+            'game': game,
+        }
+
+    return render(request, 'games/game_detail.html', context)

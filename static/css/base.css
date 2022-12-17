@@ -100,6 +100,10 @@ body {
     .whatMargin {
         padding-top: 3rem !important;
     }
+
+    .container-margin {
+        margin-top: 12%;
+    }
 }
 
 
@@ -108,6 +112,22 @@ body {
         width: 15vw;
     }
 }
+
+@media (min-width: 1360px) {
+    .container-margin {
+        margin-top: 10% !important;
+    }
+}
+
+a,
+a:link {
+    color: white
+}
+
+a:hover {
+    color: orangered
+}
+
 
 .container {
     max-width: 960px;
@@ -129,6 +149,10 @@ body {
     z-index: 1;
     background-color: rgba(0, 0, 0, .9);
     color: #fff;
+}
+
+.container-margin {
+    margin-top: 12%;
 }
 
 /*
