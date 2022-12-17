@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
-from runs.models import Game, Category
+from .models import Game, Category
 from django.db.models import F, Q
 from django.db.models.functions import Lower
 
