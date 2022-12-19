@@ -64,44 +64,50 @@
       </div>
     </div>
   </div>
-  <div class="row">
+  <div class="row text-center text-white">
     {% if secondary|length > 0 %}
-    <div class="col-xl-3 col-12 col-md-6 col-lg-4 offset-lg-1 offset-xl-2">
+    <div class="col-xl-5 col-12 col-md-6 col-lg-6 offset-xl-1 ">
       <table>
         <thead>
           <tr>
-            <th>Primary Challenges</th>
+            <th colspan="2">Primary Challenges ({{primary|length}})</th>
           </tr>
         </thead>
         <tbody>
           {% for p in primary %}
           <tr>
-            <td>
-              <img src="./../../{{ p.image }}" alt="{{ p.name }}" class="img-fluid w-50" />
+            <td width="45%">
+              <img src="{{ p.image.url }}" alt="{{ p.name }}" class="img-fluid" />
             </td>
-            <td>
+            <td width="55%">
               {{ p.name }}
+              {% if p.additional_info %}
+              <br><small>{{ p.additional_info }}</small>
+              {% endif %}
             </td>
           </tr>
           {% endfor %}
         </tbody>
       </table>
     </div>
-    <div class="col-xl-3 col-12 col-md-6 col-lg-4 ">
+    <div class="col-xl-5 col-12 col-md-6 col-lg-5 ">
       <table>
         <thead>
           <tr>
-            <th>Secondary Challenges</th>
+            <th colspan="2">Secondary Challenges ({{secondary|length}})</th>
           </tr>
         </thead>
         <tbody>
           {% for s in secondary %}
           <tr>
-            <td>
-              <img src="{{ s.image }}" alt="{{ s.name }}" class="img-fluid w-50" />
+            <td width="45%">
+              <img src="{{ s.image.url }}" alt="{{ s.name }}" class="img-fluid" />
             </td>
-            <td>
+            <td width="55%">
               {{ s.name }}
+              {% if s.additional_info %}
+              <br><small>{{ s.additional_info }}</small>
+              {% endif %}
             </td>
           </tr>
           {% endfor %}
@@ -109,21 +115,24 @@
       </table>
     </div>
     {% else %}
-    <div class="col-xl-3 col-12 col-md-6 col-lg-4 offset-lg-2 offset-xl-3">
+    <div class="col-xl-3 col-12 col-md-6 col-lg-8 offset-lg-2 offset-xl-3">
       <table>
         <thead>
           <tr>
-            <th>Primary Challenges</th>
+            <th colspan="2">Primary Challenges ({{primary|length}})</th>
           </tr>
         </thead>
         <tbody>
           {% for p in primary %}
           <tr>
-            <td>
-              <img src="{{ p.image }}" alt="{{ p.name }}" class="img-fluid w-50" />
+            <td width="45%">
+              <img src="{{ p.image }}" alt="{{ p.name }}" class="img-fluid" />
             </td>
-            <td>
+            <td width="55%">
               {{ p.name }}
+              {% if p.additional_info %}
+              <br><small>{{ p.additional_info }}</small>
+              {% endif %}
             </td>
           </tr>
           {% endfor %}

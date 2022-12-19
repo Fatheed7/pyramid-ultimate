@@ -159,6 +159,17 @@ a:hover {
     margin-top: 12%;
 }
 
+td img {
+    max-width: 50% !important;
+    height: auto;
+    padding: 2px;
+}
+
+tr {
+    border: 1px solid darkgray
+}
+
+
 /*
    * Custom translucent site header
    */
