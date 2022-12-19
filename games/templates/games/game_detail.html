@@ -27,7 +27,12 @@
       <div class="game-details-container mb-5 mt-md-5 text-white">
         <p class="mb-0 text-white font-weight-bold">{{ game.name }}</p>
         <i class="fa-regular fa-calendar-days"></i>
-        Released {{game.release_date}} {% if game.category %}
+        {% if game.release_date %}
+        Released {{game.release_date}}
+        {% else %}
+        Unknown Release Date
+        {% endif %}
+        {% if game.category %}
         <p class="small mt-1 mb-0">
           <a href="{% url 'games' %}?category={{ game.category.name }}">
             <i class="fa-solid fa-gamepad"></i> {{game.category}}
@@ -59,6 +64,74 @@
       </div>
     </div>
   </div>
+  <div class="row">
+    {% if secondary|length > 0 %}
+    <div class="col-xl-3 col-12 col-md-6 col-lg-4 offset-lg-1 offset-xl-2">
+      <table>
+        <thead>
+          <tr>
+            <th>Primary Challenges</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for p in primary %}
+          <tr>
+            <td>
+              <img src="{{ p.image }}" alt="{{ p.name }}" class="img-fluid w-50" />
+            </td>
+            <td>
+              {{ p.name }}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <div class="col-xl-3 col-12 col-md-6 col-lg-4 ">
+      <table>
+        <thead>
+          <tr>
+            <th>Secondary Challenges</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for s in secondary %}
+          <tr>
+            <td>
+              <img src="{{ s.image }}" alt="{{ s.name }}" class="img-fluid w-50" />
+            </td>
+            <td>
+              {{ s.name }}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% else %}
+    <div class="col-xl-3 col-12 col-md-6 col-lg-4 offset-lg-2 offset-xl-3">
+      <table>
+        <thead>
+          <tr>
+            <th>Primary Challenges</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for p in primary %}
+          <tr>
+            <td>
+              <img src="{{ p.image }}" alt="{{ p.name }}" class="img-fluid w-50" />
+            </td>
+            <td>
+              {{ p.name }}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  {% endif %}
   {% endblock %} {% block postloadjs %} {{ block.super }}
   <!-- prettier-ignore -->
   {% endblock %}

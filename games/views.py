@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
-from .models import Game, Category
+from .models import Game, Category, PrimaryChallenge, SecondaryChallenge
 from django.db.models import F, Q
 from django.db.models.functions import Lower
 
@@ -65,9 +65,13 @@ def game_detail(request, game_id):
     """ A view to show individual product details """
 
     game = get_object_or_404(Game, pk=game_id)
+    primary = PrimaryChallenge.objects.filter(game=game)
+    secondary = SecondaryChallenge.objects.filter(game=game)
 
     context = {
             'game': game,
+            'primary': primary,
+            'secondary': secondary,
         }
 
     return render(request, 'games/game_detail.html', context)
