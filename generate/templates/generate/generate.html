@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %} {% block page_header %} {% load mathfilters %}
+<div class="container header-container">
+    <div class="row">
+        <div class="col"></div>
+    </div>
+</div>
+{% endblock %} {% block content %}
+<div class="container-fluid container-margin">
+    <div class="row justify-content-center">
+        <form action="" method="post" class="d-contents">
+            {% csrf_token %}
+            {% for c in categories %}
+            {% if c.name == "? Deck" %}
+            {% else %}
+            <div class="card col col-2 m-1">
+                <span class="d-flex justify-content-center">{{ c.name }}</span>
+                {% for g in games %}
+                {% if g.category == c %}
+                <div class="form-check form-switch ps-5">
+                    <input class="form-check-input" type="checkbox" name="game" role="switch" value="{{g.name}}"
+                        id="flexSwitch{{g.name}}">
+                    <label class="form-check-label" for="flexSwitch{{g.name}}">{{g.name}}</label>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+            {% endif %}
+            {% endfor %}
+            <button type="submit">Click me</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+
+
+{% block postloadjs %}
+{% endblock %}

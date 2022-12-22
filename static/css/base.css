@@ -169,6 +169,9 @@ tr {
     border: 1px solid darkgray
 }
 
+.d-contents {
+    display: contents;
+}
 
 /*
    * Custom translucent site header

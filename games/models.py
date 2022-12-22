@@ -18,6 +18,7 @@ class Category(models.Model):
         verbose_name_plural = "Categories"
 
     name = models.CharField(max_length=100)
+    despaced = models.CharField(max_length=100, blank=True)
 
     def __str__(self):
         return self.name

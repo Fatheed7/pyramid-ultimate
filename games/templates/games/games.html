@@ -1,14 +1,10 @@
 {% extends "base.html" %}
 {% block extra_title %}
 {% for c in current_categories %}
-- {{c.friendly_name}}
+- {{c.name}} games
 {% endfor %}
 {%endblock %} {% load static %} {% block page_header %} {% load mathfilters %}
-<div class="container header-container">
-    <div class="row">
-        <div class="col"></div>
-    </div>
-</div>
+
 {% endblock %} {% block content %}
 <div class="overlay"></div>
 <div class="container-fluid container-margin">
@@ -123,6 +119,7 @@
             <i class="fas fa-arrow-up text-black mx-auto my-auto"></i>
         </a>
     </div>
+</div>
     {% endblock %}
 
     {% block postloadjs %}

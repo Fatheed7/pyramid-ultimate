@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'home',
     'games',
     'runs',
+    'generate',
     'storages',
     'crispy_forms',
     'mathfilters',
