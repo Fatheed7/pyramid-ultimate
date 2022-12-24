@@ -24,7 +24,7 @@ class Category(models.Model):
         return self.name
 
 class PrimaryChallenge(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=200)
     additional_info = models.TextField(blank=True)
     game = models.ForeignKey('Game', on_delete=models.CASCADE)
     image = models.ImageField(upload_to='media')
@@ -33,7 +33,7 @@ class PrimaryChallenge(models.Model):
         return self.name
 
 class SecondaryChallenge(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=200)
     additional_info = models.TextField(blank=True)
     game = models.ForeignKey('Game', on_delete=models.CASCADE)
     image = models.ImageField(upload_to='media')

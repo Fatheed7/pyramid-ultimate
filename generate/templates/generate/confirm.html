@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load static %} {% block page_header %} {% load mathfilters %}
+<div class="container header-container">
+    <div class="row">
+        <div class="col"></div>
+    </div>
+</div>
+{% endblock %} {% block content %}
+<div class="container-fluid container-margin">
+    <div class="row justify-content-center text-white mb-3">
+        Are you sure you want to generate a run with the following games?
+    </div>
+    <div class="row justify-content-center">
+        {% for s in selected_games %}
+        {% for game in games %}
+        {% if s == game.name %}
+        <div class="col-6 col-sm-4 col-md-4 col-lg-3 col-xl-2 col-xxl-2 mb-3">
+            <div class="card h-100 border-0">
+                {% if game.image %}
+                <a href="{% url 'game_detail' game.id %}">
+                    <div class="frame d-flex flex-wrap align-items-center">
+                        <img class="card-img-top img-fluid mx-auto d-block" src="{{ game.image.url }}"
+                            alt="{{ game.name }}" />
+                    </div>
+                </a>
+                {% else %}
+                <a href="">
+                    <div class="frame d-flex flex-wrap align-items-center">
+                        <img class="card-img-top img-fluid mx-auto d-block" src="{{ MEDIA_URL }}noimage.png"
+                            alt="{{ game.name }}" />
+                    </div>
+                </a>
+                {% endif %}
+                <div class="card-body pb-0">
+                    <p class="mb-0 text-center">{{ game.name }}</p>
+                </div>
+                <div class="card-footer bg-white pt-0 border-0 text-left">
+                    <div class="row">
+                        <div class="col">
+                            <p class="lead mb-0 text-center font-weight-bold">
+                                <i class="fa-solid fa-gamepad"></i> {{game.category}}
+                            </p>
+                            {% if game.category %}
+                            <p class="small mt-1 mb-0 text-center">
+                                <a class="text-white" href="{% url 'games' %}?category={{ game.category.name }}">
+                                    <i class="fas fa-tag me-1"></i>{{ game.category.friendly_name }}
+                                </a>
+                            </p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% endfor %}
+    </div>
+    <div class="row justify-content-center text-white mb-3">
+        <div class="col-6 text-center">
+            <form action="" method="post">
+                {% csrf_token %}
+                <button role="button" class="btn btn-success" name="confirmForm">Proceed</button>
+                <a href="{% url 'generate' %}" role="button" class="btn btn-danger">Return</a>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+
+{% block postloadjs %}
+{% endblock %}

@@ -173,6 +173,10 @@ tr {
     display: contents;
 }
 
+.authButton:hover {
+    color: blanchedalmond !important;
+}
+
 /*
    * Custom translucent site header
    */

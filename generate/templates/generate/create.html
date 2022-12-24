@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% load static %} {% block page_header %} {% load mathfilters %}
+<div class="container header-container">
+    <div class="row">
+        <div class="col"></div>
+    </div>
+</div>
+{% endblock %} {% block content %}
+<div class="container-fluid container-margin">
+    <div class="row justify-content-center text-white mb-3">
+        <div class="col-xl-11 col-12 col-md-6 col-lg-11">
+            <table class="text-center">
+                <thead>
+                    <tr>
+                        <th>Game</th>
+                        <th colspan="2">Primary</th>
+                        <th colspan="2">Secondary</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for c in challenge_list %}
+                    <tr>
+                        <td width="16%">
+                            {{ c.game }}
+                        </td>
+                        <td width="20%">
+                            {% for p in primary %}
+                            {% if c.primary == p.name %}
+                            {{ p.name }}
+                            {% if p.additional_info %}
+                            <br><small>{{ p.additional_info }}</small>
+                            {% endif %}
+                            {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td width="22%">
+                            {% for p in primary %}
+                            {% if c.primary == p.name %}
+                            <img src="{{ p.image.url }}" alt="{{p.name}}">
+                            {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td width="20%">
+                            {% for s in secondary %}
+                            {% if c.secondary == s.name %}
+                            {{ s.name }}
+                            {% if s.additional_info %}
+                            <br><small>{{ s.additional_info }}</small>
+                            {% endif %}
+                            {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td width="22%">
+                            {% for s in secondary %}
+                            {% if c.secondary == s.name %}
+                            <img src="{{ s.image.url }}" alt="{{s.name}}">
+                            {% endif %}
+                            {% endfor %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+
+{% block postloadjs %}
+{% endblock %}
